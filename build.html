@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <title>Habiter - About Us</title>
+        <link rel="icon" href="favicon.png" type="image/png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Comfortaa&family=Comic+Neue&family=Roboto&display=swap" rel="stylesheet">
+        <style>
+            @media only screen and (max-width: 700px) {
+                .carousel-inner img {
+                    width: 100%;
+                }
+                .navbar img{
+                    width:150px;
+                }
+                #buildhabit img{
+                    width:95% !important;
+                }
+                .btn:last-child{
+                    margin-top: 15px;
+                }
+                #buildhabit p{
+                    width:95% !important;
+                    padding:5px 10px;
+                    margin:auto;
+                }
+            }
+            .navbar{
+            background-color: #1E1E1E !important;
+            position:fixed !important;
+            width:100%;
+            overflow: hidden;
+            top:0;
+             z-index: 100 !important;
+        }
+        .navbar-text{
+            color:#ECECEC !important;
+        }
+        .nav-link{
+            color:#ECECEC !important;
+        }
+        .nav-link:hover{
+            color:#5C7AEA !important;
+            cursor: pointer;
+        }
+        .clicked{
+            color:#376DBE !important;
+            font-weight: bold;
+        }
+        </style>
+    </head>
+    <body style="background-color: #eeeddeff;">
+        <div class="navbar navbar-expand-lg navbar-light">
+            <img src="DDLogo.png" width="200px" height="60px">
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarText">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Habit List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="aboutus.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link clicked" href="build.html">Build New Habits</a>
+                </li>
+              </ul>
+            </div>
+        </div>
+
+        <div style="background-color: #1E1E1E;padding-top: 85px;padding-bottom:20px;">
+            <h1 style="color:white;font-size: 60px;font-weight: 550;text-align: center;font-family: 'Amatic SC', cursive;">Build New Habits.</h1><br>
+            <div style="display:flex;justify-content:space-around;flex-wrap: wrap;">
+            <a href="#demo" class="btn" style="background-color:#5C7AEA;color:white;width:270px;">Different aspects to build habits.</a>
+            <a href="#buildhabit" class="btn" style="background-color:#1E1E1E;color:white;width:270px;border: #5C7AEA 3px solid;">How to build them.</a>
+            </div>
+        </div>
+
+        <div><br>
+        <h2 style="color:black;font-size: 30px;font-weight: bold;font-family: 'Comic Neue', cursive;text-align: center;">Why to build new habits?</h2>
+        <div class="line" style=" margin:auto;width:150px;height:3px;background-color: #1E1E1E;"></div>
+        <p style="font-family: 'Roboto', sans-serif;text-align: center;letter-spacing: 0.4px;padding:20px;">
+            You all might not realize but building new habits is really important in order to bring stablity in our health and 
+            wellbeing. The reason why I am asking to build habits for mentaining a proper wellbeing is because habits is something
+            which a person starts doing unintentially because of which there wont be problems of laziness which may arise this is the
+            reason making habits is prefered a lot by people. Habits shape the person who you are and because of this many successful
+            people try to build habits a lot, habits shape your character and personality which shape you because of which building
+            good habits is also found to help people build good first impression. When you perform one thing everyday for many years 
+            then it helps you master that perticular thing because of which many experts in their feild tend to build habits.
+        </p>
+        </div>
+        <div id="demo" class="carousel slide" style="text-align:center;background-color:#1E1E1E;padding:50px 0px;">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="mental.png" width="700" height="400">
+                <div class="carousel-caption"><h3 style="color:#1E1E1E;">Mental health</h3></div>
+              </div>
+              <div class="carousel-item">
+                <img src="physical.jpg"width="700" height="400">
+                <div class="carousel-caption"><h3>Physical health</h3></div>
+              </div>
+              <div class="carousel-item">
+                <img src="social.jpg"width="700" height="400">
+                <div class="carousel-caption"><h3>Social health</h3></div>
+              </div>
+              <div class="carousel-item">
+                <img src="spirit.webp" width="700" height="400">
+                <div class="carousel-caption"><h3>Spiritual health</h3></div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div><br>
+          <div style="display:flex;justify-content:space-around;flex-wrap: wrap;padding-bottom: 30px;" id="buildhabit">
+            <img src="buildnew.jpg" width="650" style="border-radius:25px;">
+            <div><h1 style="text-align:center;">How to build them.</h1>
+            <p style="width:600px;font-family: 'Roboto', sans-serif;text-align: center;">TO build habits the thing you need to have is will power because whitout it no matter how much you try you 
+            wont be able to achive your goals, apart from that one more thing which you should have to build habits is to fight 
+            boredom and laziness and if a person successfully has will power and is fighting laziness then he/she will be able to
+            make habits hwich will help them achive a good well being. Apart From that, to build good habits you can search online
+            and read books for more information too, the books include "Atomic Habits" which is a best lesser and is found to be
+            very good book in terms of guidance about habits. TO build Habits one should know how to say "No" because times will come
+            when people will force you to get along with them in cost of your habits, but in order to be successful with goals say NO.
+            In order to build new habits you have to make bad habits disapper like if you want to read books daily and your bad habit is 
+            scrolling in socila media all the time then tell someone to hide your phone because we humans are lazy so instead of finding phone
+            we humans will try to take easy way out so you will read book instead. Apart from that in order to make new habits we have to change
+            the environment around us because if one person wants to stop smoking but everyone around him smoke then it will be impossible to 
+            stop smoking same way we have to change people around us in order to change ourselves or it will be very hard to build new habits.
+            </p></div>
+          </div>
+    </body>
+</html>

@@ -1,0 +1,236 @@
+<html>
+    <head>
+        <title>Habiter - Habit List</title>
+        <link rel="icon" href="favicon.png" type="image/png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Comfortaa&family=Oswald&display=swap" rel="stylesheet">
+        <style>
+            @media only screen and (max-width: 700px) {
+                .materials button{
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+            }
+        .navbar{
+                background-color: #1E1E1E !important;
+                position:fixed !important;
+                width:100%;
+                overflow: hidden;
+                top:0;
+                z-index: 1 !important;
+        }
+        .navbar-text{
+    color:#ECECEC !important;
+}
+.nav-link{
+    color:#ECECEC !important;
+}
+.nav-link:hover{
+    color:#5C7AEA !important;
+    cursor: pointer;
+}
+.clicked{
+    color:#376DBE !important;
+    font-weight: bold;
+}
+hr:last-child{
+    display: none;
+}
+
+        </style>
+    </head>
+    <body onload="onloads()" style="background-color: #eeeddeff;">
+        <div class="navbar navbar-expand-lg navbar-light">
+            <img src="DDLogo.png" width="200px" height="60px">
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarText">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link clicked" href="#">Habit List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="aboutus.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="build.html">Build New Habits</a>
+                </li>
+              </ul>
+            </div>
+        </div>
+          <div class="titles" style="background-color: #5C7AEA;padding-top: 85px;padding-bottom: 20px;">
+            <h1 style="color:white;font-size: 60px;font-weight: 500;text-align: center;font-family: 'Amatic SC', cursive;">
+            Habit List</h1><br>
+            <h3 style="color:#c6cff2;font-size: 20px;font-weight: 500;text-align: center;font-family: 'Comfortaa', cursive;">
+            Make New Habits.</h3>
+          </div><br>
+          <div class="materials" style="width:100%;display:flex;flex-wrap:wrap;justify-content:space-around;">
+            <button onclick="clearMyData()" class="btn btn-danger" style="width:150px;">Remove Data</button>
+        <input id="changeMe" class="form-control" type="text" maxlength="35" placeholder="Write Your Habit" style="width:300px">
+        <button onclick="addData()" class="btn btn-primary" style="width:150px;">Add Data</button>
+          </div>
+        <br><br>
+        <div id="showMe" style="margin:auto;width:95%;background-color: #e6e6e6ff;border-radius: 25px;margin-bottom: 10px;
+        padding-bottom: 10px;padding-top: 10px;"></div>
+        <script>
+            //to.string() date to string
+            //new Date() stirng to date
+            lsData = localStorage.getItem("habit_data");
+            g1 = new Date;
+            g1.setDate(g1.getDate()+1);
+            new_dict = {
+                "tom":g1,
+                0:{task:"",streak:0,stats:"A"},
+                1:{task:"",streak:0,stats:"A"},
+                2:{task:"",streak:0,stats:"A"},
+                3:{task:"",streak:0,stats:"A"},
+                4:{task:"",streak:0,stats:"A"},
+                5:{task:"",streak:0,stats:"A"},
+                6:{task:"",streak:0,stats:"A"},
+            }
+            function clearMyData(){
+                if(confirm("Are you sure?")==true){
+                    localStorage.removeItem("habit_data");
+                update(new_dict);
+                showData();
+                }
+            }
+            function onloads(){
+                if(lsData == null){
+                    //alert("Empty");
+                    console.log(lsData);
+                    update(new_dict);
+                }else{
+                    lsData = get();
+                   date1 = new Date(lsData['tom']);
+                   date2 = new Date();
+                   answer = compare(date1,date2);
+                   console.log(answer);
+                   if(answer == 'Equal'){
+                    lsData['tom'] = g1.toString();
+                    for(i=0;i<=6;i++){
+                    if(lsData[i]["stats"] == "ND"){
+                        lsData[i]['streak'] = 0;
+                        lsData[i]['stats'] = 'ND';
+                    }
+                    if(lsData[i]["stats"]!="A"){
+                        lsData[i]['stats'] = 'ND';
+                    }
+                    }
+                    update(lsData);
+                    console.log('compare stats and streak');
+                   }else if(answer == 'Less'){
+                    lsData['tom'] = g1.toString();
+                    for(i=0;i<=6;i++){
+                        if(lsData[i]["stats"] != "A"){
+                        lsData[i]['streak'] = 0;
+                        lsData[i]['stats'] = 'ND';
+                    }
+                    }
+                    update(lsData);
+                    console.log('all will go to zero');
+                   }
+                   showData();
+                }
+            }
+            function showData(){
+                document.getElementById("showMe").innerHTML = "";
+                data = get();
+                for(i=0;i<=6;i++){
+                    if(data[i]['stats']!="A"){
+                        document.getElementById("showMe").innerHTML = document.getElementById("showMe").innerHTML + "<div style='text-align: center;'><h3 style='font-size: 25px;font-family:'Comfortaa', cursive;'>"+
+                        data[i]['task']+"</h3><div class='habit_buttons' style='margin: auto;width: 100%;display:flex;justify-content: space-around;'><b style='font-size: 20px;font-family: 'Oswald', sans-serif;'>Streak:"+
+                        data[i]['streak']+"</b><button value="+i+" onclick='done(this.value)' class='btn btn-primary'>Done</button><button value="
+                        +i+" onclick='clearData(this.value)' class='btn btn-danger'>Remove</button></div></div><hr>"
+                    }
+                }
+            }
+            function done(getId){
+                console.log(getId);
+                data = get();
+                if(data[getId]['stats']=='ND'){
+                data[getId]['streak'] = data[getId]['streak']+1;
+                data[getId]['stats'] = 'D';
+                update(data);
+                showData();
+            }else if(data[getId]['stats']!="ND"){
+                alert('you have already done this for today!!');
+            }
+            }
+            function addData(){
+                data = get();
+                changeData = document.getElementById("changeMe").value;
+                getPosition = empty_check(data);
+                update_data(getPosition,changeData);
+                console.log("updating done");
+                showData();
+            }
+            function clearData(val){
+                data = get();
+                data[val]["task"] = "";
+                data[val]["streak"] = 0;
+                data[val]["stats"] = "A";
+                update(data);
+                showData();
+            }
+            function update_data(val,message){
+                if(val!=null){
+                    dat = get();
+                dat[val]["task"] = message;
+                dat[val]["streak"] = 0;
+                dat[val]["stats"] = "ND";
+                update(dat);
+                }else{
+                    alert("There is no space, Limit of 7 habits is reached.");
+                }
+            }
+            function update(dict){
+                //dat = dict["tom"];
+                dict["tom"] = dict["tom"].toString();
+                localStorage.setItem("habit_data",JSON.stringify(dict));
+            }
+            function get(){
+                return(JSON.parse(localStorage.getItem("habit_data")));
+            }
+            function empty_check(dic){
+                for(i=0;i<=6;i++){
+                    if(dic[i]["task"]==""){
+                        return(i);
+                        break;
+                    }else if(i==6){
+                        return(null);
+                    }
+                }
+
+            }
+            function compare(stored_date,today){
+                if(stored_date.getYear()>today.getYear()){
+                    return("More");
+                }else if(stored_date.getYear()<today.getYear()){
+                    return("Less");
+                }else{
+                    if(stored_date.getMonth()>today.getMonth()){
+                    return("More");
+                    }else if(stored_date.getMonth()<today.getMonth()){
+                    return("Less");
+                    }else{
+                        if(stored_date.getDate()>today.getDate()){
+                        return("More");
+                        }else if(stored_date.getDate()<today.getDate()){
+                        return("Less");
+                        }else{
+                        return("Equal");
+                        }
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
